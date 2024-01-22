@@ -27,7 +27,7 @@ body
     color:white;
 }
 
-#NavBarTitle
+.NavLink
 {
     text-decoration: none;
     color:white;
