@@ -25,3 +25,10 @@ html,body
     background-color: black;
     position:fixed;
 }
+
+#editor
+{
+    position:fixed;
+    left:34;
+    top:50px;
+}
