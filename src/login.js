@@ -76,6 +76,8 @@ document.getElementById("loginForm").addEventListener("submit",function(e){
         }).then(response =>{
             if(response.ok)
             {
+                console.log(response.headers.get("Set-Cookie"))
+                document.cookie = response.headers.get("Set-Cookie")
                 return response.text()
             }
             throw new Error("Network response failed")
