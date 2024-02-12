@@ -5,10 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VividFusion</title>
     <link rel="stylesheet" href="style/font.css">
-    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/login.css">
   </head>
   <body>
-    <nav id="MainNavBar"><a id="NavBarTitle" href="index.html">VividFusion</a><div id="NavProfile"><img id="NavPFP" class="PFP" src="https://avatars.githubusercontent.com/u/115603886?v=4"><span id="NavUsername">Username</span></div></nav>
-    <script src="src/script.js"></script>
+    <div class="login-container" id="LoginUI">
+      <div id="LoginStatement">
+        We're glad to see you back.
+        <img src="assets/img/LoginStatementBackground.jpg" id="LoginStatementBackground">
+      </div>
+      <div id="LoginHolder">
+        <h2>Login To VividFusion</h2>
+      <form method="post" id="loginForm">
+        <input type="text" placeholder="Username" name="username" required id="usernameLogin">
+        <input type="password" placeholder="Password" name="password" required id="passwordLogin">
+        <input type="submit" value="Login">
+        <span class="LoginToggle">Don't Have an Account? <span class="LoginToggleButton" onclick="toggleUI()">Register</span></span>
+      </form>
+      </div>
+    </div>
+
+    <div class="login-container" id="SignupUI">
+      <div id="SignupStatement">
+        We welcome you to VividFusion.
+        <img src="assets/img/SignupStatementBackground.jpg" id="SignupStatementBackground">
+      </div>
+      <div id="SignupHolder">
+        <h2>Register For VividFusion</h2>
+      <form method="post" id="signupForm">
+        <input id="signupUsername" type="text" placeholder="Nickname" name="username" required alt="This is your username, change it at any time">
+        <input id="signupName" type="text" placeholder="Name: (ex: Jonathan Liu)" name="name" required alt="Your name">
+        <input id="signupID" type="text" placeholder="User ID" name="userID" required alt="This is your user id, use it to login">
+        <input id="signupPW" type="password" placeholder="Password" name="password" required>
+        <<input type="submit" value="Register">>
+        <span class="LoginToggle">Already Have an Account? <span class="LoginToggleButton" onclick="toggleUI()">Login</span></span>
+      </form>
+      </div>
+    </div>
+    <script src="src/login.js"></script>
   </body>
 </html>
