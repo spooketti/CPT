@@ -1,8 +1,14 @@
 let loginUI = document.getElementById("LoginUI")
 let signupUI = document.getElementById("SignupUI")
-let loginServer = "http://192.168.1.106:8086/login"
-let signupServer = "http://192.168.1.106:8086/signup"
+
+let loginGreetingElement = document.getElementById("LoginGreeting")
+let signupGreetingElement = document.getElementById("SignupGreeting")
+let loginServer = "http://10.8.137.105:8086/login"
+let signupServer = "http://10.8.137.105:8086/signup"
 let isLoginUI = true;
+
+let loginGreetings = ["We're glad to see you back","Welcome back to VividFusion"]
+let signupGreetings = ["Sign up for VividFusion","Wecome to VividFusion"]
 
 function toggleUI()
 {
@@ -10,12 +16,14 @@ function toggleUI()
     switch(isLoginUI)
     {
         case true:
+            genLoginGreet()
             signupUI.style.display = "none"
             loginUI.style.display = "flex"
             loginUI.style.animation = "fadeInUp 1s ease"
         break;
 
         case false:
+            genSignupGreet()
             loginUI.style.display = "none"
             signupUI.style.display = "flex"
             signupUI.style.animation = "fadeInUp 1s ease"
@@ -88,3 +96,16 @@ document.getElementById("loginForm").addEventListener("submit",function(e){
             console.error("There was a problem with the fetch", error);
           });
 })
+
+function genLoginGreet()
+{
+    loginGreetingElement.innerText = loginGreetings[Math.floor(Math.random() * loginGreetings.length)]
+}
+
+function genSignupGreet()
+{
+    signupGreetingElement.innerText = signupGreetings[Math.floor(Math.random())*signupGreetings.length]
+}
+
+genLoginGreet()
+genSignupGreet()
