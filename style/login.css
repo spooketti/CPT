@@ -7,6 +7,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow-y: clip;
+    overflow-x: clip;
   }
 
   .login-container {
@@ -18,6 +20,7 @@ body {
     animation: fadeInUp 1s ease;
     display: flex;
     gap:30px;
+    z-index: 2;
   }
 
   h2 {
@@ -117,3 +120,49 @@ body {
     color:#7a7adc;
   }
 
+  .DayNight {
+    background: linear-gradient(2deg, #000000,#222222, #8e555a, #c36865, #e3b689, #839cba, #4c7fa8, #0f5d8c, #4c7fa8, #839cba, #e3b689, #c36865, #8e555a, #000000, #000000);
+    background-size: 2800% 2800%;
+
+    -webkit-animation: DayNight 32s ease infinite;
+    -moz-animation: DayNight 32s ease infinite;
+    animation: DayNight 32s ease infinite;
+}
+
+@-webkit-keyframes DayNight {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes DayNight {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes DayNight {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+
+#Sun
+{
+  border-radius: 50%;
+  width:50px;
+  aspect-ratio: 1/1;
+  background-color: rgb(247, 202, 165);
+  z-index: 1;
+  transform-origin: 600px 100%;
+  left:0;
+  bottom:0;
+  position:absolute;
+  transform:rotate(0deg);
+  animation: Sun infinite 16s;
+}
+
+@keyframes Sun
+{
+  0%{transform:rotate(-6deg)}
+  80%{transform:rotate(180deg)}
+  100%{transform:rotate(270deg)}
+}
