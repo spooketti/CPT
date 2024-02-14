@@ -114,7 +114,7 @@ function dummy()
     let payload = {
         "userID":"spooketti"
     }
-    fetch("http://127.0.0.1:8086//dummy",
+    fetch("http://127.0.0.1:8086//updateUser",
         {
             method:"POST",
             headers: {
@@ -139,3 +139,21 @@ function dummy()
 
 genLoginGreet()
 genSignupGreet()
+
+function toDataURL(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      var reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result);
+      }
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+  }
+  
+  toDataURL('https://avatars.githubusercontent.com/u/115603886?v=4', function(dataUrl) {
+    console.log('RESULT:', dataUrl)
+  })

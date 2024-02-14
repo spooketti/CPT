@@ -4,6 +4,21 @@
     width:100%;
     left:0;
     top:0;
-    position:fixed;
+    position:sticky;
     background-color: black;
+    border-bottom: 1px white solid;
+    box-shadow:  3px 2px rgba(142,142,142,0.3);
+    color:white;
+    display: flex;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    z-index: 5;
+    justify-content: space-between;
+    padding-right:6px;
+}
+
+#NavbarProfile
+{
+    height:100%;
+    border-radius: 50%;
 }
