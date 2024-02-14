@@ -1,30 +1,106 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VividFusion</title>
+    <link rel="stylesheet" href="style/font.css">
+    <link rel="stylesheet" href="style/index.css">
+  </head>
+  <body>
+    <nav id="MainNavBar"><a id="NavBarTitle" href="index.html">VividFusion</a><div id="NavProfile"><img id="NavPFP" class="PFP" src="https://avatars.githubusercontent.com/u/115603886?v=4"><span id="NavUsername">Username</span></div></nav>
+    <script src="src/script.js"></script>
+  </body>
+</html>
+<head>
+  <title>Page</title>
+  <style>
+    canvas {
+      border: 5px solid black;
+    }
+  </style>
+</head>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Image Editor</title>
+
 <style>
-    #imageContainer {
-        width: 1000px;
-        height: auto;
-        max-height: 1000px;
-        overflow: hidden;
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }
+
+    .container {
+        max-width: 800px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #imageContainer {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
     #imageContainer img {
-        width: 100%;
+        max-width: 100%;
         height: auto;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    input[type="range"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .button:hover {
+        background-color: #45a049;
     }
 </style>
 </head>
 <body>
 
-<input type="file" id="fileInput" accept=".png,.jpeg,.jpg" />
-<div id="imageContainer"></div>
-<label for="saturationSlider">Saturation:</label>
-<input type="range" id="saturationSlider" min="0" max="400" value="100">
-<label for="brightnessSlider">Brightness:</label>
-<input type="range" id="brightnessSlider" min="0" max="200" value="100">
+<div class="container">
+    <input type="file" id="fileInput" accept=".png,.jpeg,.jpg" />
+    <div id="imageContainer"></div>
+    <label for="saturationSlider">Saturation:</label>
+    <input type="range" id="saturationSlider" min="0" max="400" value="100">
+    <label for="brightnessSlider">Brightness:</label>
+    <input type="range" id="brightnessSlider" min="0" max="200" value="100">
+    <button class="button" id="resetButton">Reset</button>
+    <button onclick="downloadImage()">Download Image</button>
+</div>
 
 <script>
 document.getElementById('fileInput').addEventListener('change', function(event) {
@@ -52,8 +128,8 @@ function displayImage(image) {
     const ctx = canvas.getContext('2d');
     
     const aspectRatio = image.width / image.height;
-    canvas.width = 1000;
-    canvas.height = 1000 / aspectRatio;
+    canvas.width = 500;
+    canvas.height = 500 / aspectRatio;
 
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
@@ -69,6 +145,11 @@ function displayImage(image) {
     document.getElementById('brightnessSlider').addEventListener('input', function() {
         adjustImage(image);
     });
+
+    // Add event listener to reset button
+    document.getElementById('resetButton').addEventListener('click', function() {
+        resetImage(image);
+    });
 }
 
 function adjustImage(image) {
@@ -76,8 +157,8 @@ function adjustImage(image) {
     const ctx = canvas.getContext('2d');
 
     const aspectRatio = image.width / image.height;
-    canvas.width = 1000;
-    canvas.height = 1000 / aspectRatio;
+    canvas.width = 600;
+    canvas.height = 600 / aspectRatio;
 
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
@@ -105,6 +186,18 @@ function adjustImage(image) {
     const container = document.getElementById('imageContainer');
     container.innerHTML = ''; // Clear previous content
     container.appendChild(canvas);
+}
+
+function resetImage(image) {
+    displayImage(image);
+    let range = document.getElementById('saturationSlider');
+    range.addEventListener('saturationSlider', function(){
+    range.value = '100';
+    })
+    range.addEventListener('mouseout', function(){
+    range.value = '50';
+    })
+
 }
 
 // Convert RGB to HSL
@@ -150,7 +243,5 @@ function hslToRgb(h, s, l) {
     }
     return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
-</script>
 
-</body>
-</html>
+</script>
