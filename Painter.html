@@ -1,63 +1,201 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>VividFusion</title>
-    <link rel="stylesheet" href="style/font.css">
-    <link rel="stylesheet" href="style/index.css">
-  </head>
-  <body>
-    <nav id="MainNavBar"><a id="NavBarTitle" href="index.html">VividFusion</a><div id="NavProfile"><img id="NavPFP" class="PFP" src="https://avatars.githubusercontent.com/u/115603886?v=4"><span id="NavUsername">Username</span></div></nav>
-    <script src="src/script.js"></script>
-  </body>
-</html>
 <head>
-  <title>Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VividFusion</title>
+  <!-- Link to external CSS files -->
+  <link rel="stylesheet" href="style/font.css">
+  <link rel="stylesheet" href="style/index.css">
+  <!-- css stlyes-->
   <style>
+    /* canvas styling*/
     canvas {
       border: 5px solid black;
+      margin-left: 250px;
+      margin-bottom: 100px;
+    }
+    /* container of queston */
+    #questionContainer {
+      margin-right: 20px;
+      margin-top: -500px;
+    }
+    /* styling for drawing container*/
+    #drawingContainer {
+      display: flex;
+      align-items: center;
+    }
+    /* question text */
+    #question {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+    /* answer image */
+    #answerImage {
+      display: block;
+      margin: 20px auto;
+      max-width: 90%;
+      height: auto;
+    }
+    /* colors style */
+    .colorSelector {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      cursor: pointer;
+      margin: 5px;
     }
   </style>
 </head>
 <body>
-  <canvas id="drawingCanvas" width="800" height="600"></canvas>
+  <!-- nav bar (copy pasted from file) -->
+  <nav id="MainNavBar">
+    <a id="NavBarTitle" href="index.html">VividFusion</a>
+    <!-- user profile from jonathan code-->
+    <div id="NavProfile">
+      <img id="NavPFP" class="PFP" src="https://avatars.githubusercontent.com/u/115603886?v=4">
+      <span id="NavUsername">Username</span>
+    </div>
+  </nav>
+  
+  <!-- drawing canvas!! -->
+  <div id="drawingContainer">
+    <div id="questionContainer">
+      <!-- question -->
+      <h2 id="question">What do you want to draw?</h2>
+      <!-- radio buttons... (needed help on this) --->
+      <input type="radio" id="cat" name="drawingChoice" value="Cat">
+      <label for="cat">Cat</label><br>
+      <input type="radio" id="cookie" name="drawingChoice" value="Cookie">
+      <label for="cookie">Cookie</label><br>
+      <input type="radio" id="house" name="drawingChoice" value="House">
+      <label for="house">House</label><br>
+
+    </div>
+    <!-- canvas -->
+    <canvas id="drawingCanvas" width="800" height="600"></canvas>
+    <!-- colors -->
+    <div id="colorSelectors">
+      <div class="colorSelector" style="background-color: red;"></div>
+      <div class="colorSelector" style="background-color: blue;"></div>
+      <div class="colorSelector" style="background-color: green;"></div>
+      <div class="colorSelector" style="background-color: black;"></div>
+      <div class="colorSelector" style="background-color: purple;"></div>
+      <div class="colorSelector" style="background-color: orange;"></div>
+      <div class="colorSelector" style="background-color: pink;"></div>
+      <div class="colorSelector" style="background-color: yellow;"></div>
+      <div class="colorSelector" style="background-color: brown;"></div>
+    </div>
+  </div>
+
+  <!-- display user input image -->
+  <img id="answerImage" src="" alt="Answer Image">
+
+  <!-- js -->
+  <script src="src/script.js"></script>
   <script>
-   // gets the canvas library/element
+    // js canvas drawing function stuff
     var canvas = document.getElementById('drawingCanvas');
     var ctx = canvas.getContext('2d');
 
-    // tracks mouse positioin
     var isDrawing = false;
     var lastX = 0;
     var lastY = 0;
-    ctx.fillRect(25, 25, 25, 25)
+    var strokeColor = 'black'; 
 
-    // event listeneers for mouse
+    // mouse down 
     canvas.addEventListener('mousedown', function(e) {
       isDrawing = true;
       [lastX, lastY] = [e.offsetX, e.offsetY];
     });
 
+    // event listener for mouse moving
     canvas.addEventListener('mousemove', function(e) {
-      if (!isDrawing) return; // stops function if no drawing
+      if (!isDrawing) return;
       ctx.beginPath();
-      ctx.moveTo(lastX, lastY); // starts from last position
-      ctx.lineTo(e.offsetX, e.offsetY); // moves to current positioin
-      ctx.strokeStyle = 'black'; // line color
-      ctx.lineWidth = 2; // line width
-      ctx.lineCap = 'round'; // line cap 
-      ctx.lineJoin = 'round'; // line join style
-      ctx.stroke(); // drawing!
-      [lastX, lastY] = [e.offsetX, e.offsetY]; // updates the last position
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = 10;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+      [lastX, lastY] = [e.offsetX, e.offsetY];
     });
 
+    // mouse up function
     canvas.addEventListener('mouseup', function() {
       isDrawing = false;
     });
 
+    // mouse out function
     canvas.addEventListener('mouseout', function() {
       isDrawing = false;
+    });
+
+    // event listener for color selecting
+    document.querySelectorAll('.colorSelector').forEach(item => {
+      item.addEventListener('click', function() {
+        strokeColor = this.style.backgroundColor;
+      });
+    });
+
+    // event listener drawing choice
+    var drawingChoices = document.querySelectorAll('input[name="drawingChoice"]');
+    drawingChoices.forEach(function(choice) {
+      choice.addEventListener('change', function() {
+        var selectedChoice = document.querySelector('input[name="drawingChoice"]:checked').value;
+        document.getElementById('question').textContent = "You are drawing a " + selectedChoice + ".";
+        displayAnswerImage(selectedChoice); 
+      });
+    });
+
+    // displays answer imaeg
+    function displayAnswerImage(choice) {
+      var answerImage = document.getElementById('answerImage');
+      switch (choice) {
+        case 'Cat':
+          answerImage.src = 'images/fill-in-cat.png';
+          break;
+        case 'Cookie':
+          answerImage.src = 'images/fill-in-cookie.png';
+          break;
+        case 'House':
+          answerImage.src = 'images/fill-in-house.png';
+          break;
+        default:
+          answerImage.src = ''; 
+          break;
+      }
+    }
+
+    // puts image on canvas
+    function drawImageOnCanvas(imageSource) {
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height); 
+      };
+      img.src = imageSource;
+    }
+
+
+    drawingChoices.forEach(function(choice) {
+      choice.addEventListener('change', function() {
+        var selectedChoice = document.querySelector('input[name="drawingChoice"]:checked').value;
+        switch (selectedChoice) {
+          case 'Cat':
+            drawImageOnCanvas('images/fill-in-cat.png');
+            break;
+          case 'Cookie':
+            drawImageOnCanvas('images/fill-in-cookie.png');
+            break;
+          case 'House':
+            drawImageOnCanvas('images/fill-in-house.png');
+            break;
+        }
+      });
     });
   </script>
 </body>
