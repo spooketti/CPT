@@ -7,76 +7,125 @@
   <!-- Link to external CSS files -->
   <link rel="stylesheet" href="style/font.css">
   <link rel="stylesheet" href="style/index.css">
-  <!-- css stlyes-->
+  <!-- css styles -->
   <style>
-    /* canvas styling*/
-    canvas {
-      border: 5px solid black;
-      margin-left: 250px;
-      margin-bottom: 100px;
+    /* General styles */
+    body {
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
-    /* container of queston */
-    #questionContainer {
-      margin-right: 20px;
-      margin-top: -500px;
+
+    /* Header styles */
+    #MainNavBar {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
     }
-    /* styling for drawing container*/
+
+    #NavBarTitle {
+      color: #fff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Drawing container styles */
     #drawingContainer {
       display: flex;
+      flex-direction: column;
       align-items: center;
+      margin-top: 20px;
     }
-    /* question text */
+
+    /* Question container styles */
+    #questionContainer {
+      background-color: #fff;
+      border: 2px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    /* Question text styles */
     #question {
       font-size: 24px;
       font-weight: bold;
-      font-family: Arial, sans-serif;
       color: #333;
+      margin-bottom: 10px;
     }
-    /* answer image */
-    #answerImage {
-      display: block;
-      margin: 20px auto;
-      max-width: 90%;
-      height: auto;
-    }
-    /* colors style */
+
+    /* Color selectors styles */
     .colorSelector {
       width: 20px;
       height: 20px;
       display: inline-block;
       cursor: pointer;
       margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+    }
+
+    /* Eraser styles */
+    #eraser {
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 1px solid #333;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    /* Line width selectors styles */
+    .lineWidthSelector {
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      cursor: pointer;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Canvas styles */
+    canvas {
+      border: 5px solid #6c63ff;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
     }
   </style>
 </head>
 <body>
-  <!-- nav bar (copy pasted from file) -->
+  <!-- Navigation bar -->
   <nav id="MainNavBar">
     <a id="NavBarTitle" href="index.html">VividFusion</a>
-    <!-- user profile from jonathan code-->
-    <div id="NavProfile">
-      <img id="NavPFP" class="PFP" src="https://avatars.githubusercontent.com/u/115603886?v=4">
-      <span id="NavUsername">Username</span>
-    </div>
   </nav>
   
-  <!-- drawing canvas!! -->
+  <!-- Drawing container -->
   <div id="drawingContainer">
+    <!-- Question container -->
     <div id="questionContainer">
-      <!-- question -->
+      <!-- Question -->
       <h2 id="question">What do you want to draw?</h2>
-      <!-- radio buttons... (needed help on this) --->
+      <!-- Drawing options -->
       <input type="radio" id="cat" name="drawingChoice" value="Cat">
       <label for="cat">Cat</label><br>
       <input type="radio" id="cookie" name="drawingChoice" value="Cookie">
       <label for="cookie">Cookie</label><br>
       <input type="radio" id="house" name="drawingChoice" value="House">
       <label for="house">House</label><br>
-
     </div>
-    <!-- canvas -->
+    <!-- Canvas -->
     <canvas id="drawingCanvas" width="800" height="600"></canvas>
-    <!-- colors -->
+    <!-- Color selectors -->
     <div id="colorSelectors">
       <div class="colorSelector" style="background-color: red;"></div>
       <div class="colorSelector" style="background-color: blue;"></div>
@@ -87,30 +136,44 @@
       <div class="colorSelector" style="background-color: pink;"></div>
       <div class="colorSelector" style="background-color: yellow;"></div>
       <div class="colorSelector" style="background-color: brown;"></div>
+      <div class="colorSelector" style="background-color: tan;"></div>
+      <div class="colorSelector" style="background-color: sienna;"></div>
+      <div class="colorSelector" style="background-color: chocolate;"></div>
+      <div class="colorSelector" style="background-color: sandybrown;"></div>
+      <div class="colorSelector" style="background-color: peru;"></div>
+      <div class="colorSelector" style="background-color: cyan;"></div>
+      <div class="colorSelector" style="background-color: magenta;"></div>
+      <div class="colorSelector" style="background-color: indigo;"></div>
+      <div class="colorSelector" style="background-color: teal;"></div>
+      <div class="colorSelector" style="background-color: gold;"></div>
+      <div class="colorSelector" style="background-color: olive;"></div>
+    </div>
+    <!-- Eraser -->
+    <div id="eraser"></div>
+    <!-- Line width selectors -->
+    <div id="lineWidthSelectors">
+      <div class="lineWidthSelector" id="lineWidth20">20px</div>
+      <div class="lineWidthSelector" id="lineWidth10">10px</div>
+      <div class="lineWidthSelector" id="lineWidth1">1px</div>
+      <div class="lineWidthSelector" id="lineWidth5">5px</div>
     </div>
   </div>
 
-  <!-- display user input image -->
-  <img id="answerImage" src="" alt="Answer Image">
-
-  <!-- js -->
-  <script src="src/script.js"></script>
+  <!-- JavaScript -->
   <script>
     // js canvas drawing function stuff
     var canvas = document.getElementById('drawingCanvas');
     var ctx = canvas.getContext('2d');
-
     var isDrawing = false;
     var lastX = 0;
     var lastY = 0;
-    var strokeColor = 'black'; 
-
-    // mouse down 
+    var strokeColor = 'black';
+    var lineWidth = 10; // Default line width
+    // mouse down
     canvas.addEventListener('mousedown', function(e) {
       isDrawing = true;
       [lastX, lastY] = [e.offsetX, e.offsetY];
     });
-
     // event listener for mouse moving
     canvas.addEventListener('mousemove', function(e) {
       if (!isDrawing) return;
@@ -118,69 +181,73 @@
       ctx.moveTo(lastX, lastY);
       ctx.lineTo(e.offsetX, e.offsetY);
       ctx.strokeStyle = strokeColor;
-      ctx.lineWidth = 10;
+      ctx.lineWidth = lineWidth; // Set the line width
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.stroke();
       [lastX, lastY] = [e.offsetX, e.offsetY];
     });
-
     // mouse up function
     canvas.addEventListener('mouseup', function() {
       isDrawing = false;
     });
-
     // mouse out function
     canvas.addEventListener('mouseout', function() {
       isDrawing = false;
     });
-
     // event listener for color selecting
     document.querySelectorAll('.colorSelector').forEach(item => {
       item.addEventListener('click', function() {
         strokeColor = this.style.backgroundColor;
       });
     });
-
+    // event listener for eraser
+    var eraserEnabled = false;
+    document.getElementById('eraser').addEventListener('click', function() {
+      eraserEnabled = !eraserEnabled;
+      if (eraserEnabled) {
+        strokeColor = 'white'; // Set the stroke color to white for erasing
+      } else {
+        strokeColor = 'black'; // Set the stroke color back to black for drawing
+      }
+    });
+    // event listeners for line width selectors
+    document.querySelectorAll('.lineWidthSelector').forEach(item => {
+      item.addEventListener('click', function() {
+        lineWidth = parseInt(this.textContent); // Set the line width based on the button text content
+      });
+    });
     // event listener drawing choice
     var drawingChoices = document.querySelectorAll('input[name="drawingChoice"]');
     drawingChoices.forEach(function(choice) {
       choice.addEventListener('change', function() {
         var selectedChoice = document.querySelector('input[name="drawingChoice"]:checked').value;
         document.getElementById('question').textContent = "You are drawing a " + selectedChoice + ".";
-        displayAnswerImage(selectedChoice); 
+        displayAnswerImage(selectedChoice);
       });
     });
-
-    // displays answer imaeg
+    // displays answer image
     function displayAnswerImage(choice) {
-      var answerImage = document.getElementById('answerImage');
       switch (choice) {
         case 'Cat':
-          answerImage.src = 'images/fill-in-cat.png';
+          drawImageOnCanvas('images/fill-in-cat.png');
           break;
         case 'Cookie':
-          answerImage.src = 'images/fill-in-cookie.png';
+          drawImageOnCanvas('images/fill-in-cookie.png');
           break;
         case 'House':
-          answerImage.src = 'images/fill-in-house.png';
-          break;
-        default:
-          answerImage.src = ''; 
+          drawImageOnCanvas('images/fill-in-house.png');
           break;
       }
     }
-
     // puts image on canvas
     function drawImageOnCanvas(imageSource) {
       const img = new Image();
       img.onload = function() {
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height); 
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       };
       img.src = imageSource;
     }
-
-
     drawingChoices.forEach(function(choice) {
       choice.addEventListener('change', function() {
         var selectedChoice = document.querySelector('input[name="drawingChoice"]:checked').value;
