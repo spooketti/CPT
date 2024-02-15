@@ -6,6 +6,10 @@ let signupGreetingElement = document.getElementById("SignupGreeting")
 let loginServer = "http://127.0.0.1:8086//login"
 let signupServer = "http://127.0.0.1:8086//signup"
 let isLoginUI = true;
+let pfpUploadEl = document.getElementById("fileUploadLogin")
+let pfpPreview = document.getElementById("LoginPFPPreview")
+let defaultPFP
+let pfpChanged = false
 
 let loginGreetings = ["We're glad to see you back","Welcome back to VividFusion"]
 let signupGreetings = ["Sign up for VividFusion","Wecome to VividFusion"]
@@ -38,11 +42,13 @@ document.getElementById("signupForm").addEventListener("submit",function(e)
     let name = document.getElementById("signupName").value
     let id = document.getElementById("signupID").value
     let password = document.getElementById("signupPW").value
+    let pfp = pfpChanged ? pfpPreview.src : defaultPFP
     let payload = {
         "userID":id,
         "password":password,
         "name":name,
-        "username":username
+        "username":username,
+        "pfp":pfp
     }
     fetch(signupServer,
         {
@@ -137,23 +143,41 @@ function dummy()
           });
 }
 
+function uploadPFP()
+{
+    pfpUploadEl.click()
+}
+
 genLoginGreet()
 genSignupGreet()
 
-function toDataURL(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-      var reader = new FileReader();
-      reader.onloadend = function() {
-        callback(reader.result);
-      }
-      reader.readAsDataURL(xhr.response);
+pfpUploadEl.addEventListener('change', function(event) {
+    pfpChanged = true
+    const file = event.target.files[0]; // Get the selected file
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const imageUrl = event.target.result; // Get the image URL
+            const image = new Image();
+            image.src = imageUrl;
+            image.onload = function() {
+                pfpPreview.src = image.src
+            };
+        };
+        reader.readAsDataURL(file); // Read the file as a data URL
+    }
+});
+
+let xhr = new XMLHttpRequest();       
+    xhr.open("GET", "../assets/img/DefaultPFP.png", true); 
+    xhr.responseType = "blob";
+    xhr.onload = function () {
+            let reader = new FileReader();
+            reader.onload = function(event) {
+               let res = event.target.result;
+               defaultPFP = res
+            }
+            let file = this.response;
+            reader.readAsDataURL(file)
     };
-    xhr.open('GET', url);
-    xhr.responseType = 'blob';
-    xhr.send();
-  }
-  
-  toDataURL('https://avatars.githubusercontent.com/u/115603886?v=4', function(dataUrl) {
-    console.log('RESULT:', dataUrl)
-  })
+    xhr.send()

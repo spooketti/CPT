@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     overflow-y: clip;
     overflow-x: clip;
   }
@@ -227,6 +227,32 @@ animation:starAtNight infinite 16s ease;
   0%{transform:rotate(174deg)}
   80%{transform:rotate(360deg)}
   100%{transform:rotate(534deg)}
+}
+
+#Signup
+{
+  background-color: #6C5B7B;
+  color:white;
+  border-radius: 8px;
+  border:none;
+  transition: background-color .25s;
+}
+
+#Signup:hover
+{
+  background-color: #c06c84;
+}
+
+#pfpLabel
+{
+  color:white;
+}
+
+#LoginPFPPreview
+{
+  border-radius: 50%;
+  height:100px;
+  aspect-ratio: 1/1;
 }
 
 /*0%{transform:rotate(-6deg)}
