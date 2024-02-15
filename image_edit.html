@@ -7,19 +7,14 @@
 <link rel="stylesheet" href="style/font.css">
 <link rel="stylesheet" href="style/index.css">
 <link rel="stylesheet" href="style/navbar.css">    
-</head>
 <style>
     body {
         font-family: Arial, sans-serif;
-        margin-left: 320px
-    }
-    body {
-        background-color: #b1dae9;
-        margin: 0;
-        padding: 0;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+        margin-left: 0px;
+        margin-top: -85px;
+        background-image: url('images/background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .container {
@@ -84,20 +79,17 @@
             <a href="Painter.html">Paint Editor</a>
             <a href="login.html" id="SignupNavbar">Sign up</a>
         </div>
-      </nav>
-<h1>Image Editor</h1>
-<div class="container">
-    <input type="file" id="fileInput" accept=".png,.jpeg,.jpg" />
-    <div id="imageContainer"></div>
-    <label for="saturationSlider">Saturation:</label>
-    <input type="range" id="saturationSlider" min="0" max="400" value="100">
-    <label for="brightnessSlider">Brightness:</label>
-    <input type="range" id="brightnessSlider" min="0" max="200" value="100">
-    <button class="button" id="resetButton">Reset</button>
-    <a id="downloadButton" class="button" href="#" onclick="downloadImage()">Download Image</a>
-</div>
-
-<script src="src/imageEditor.js"></script>
-<!--<script src="src/authCheck.js"></script>-->
+    </nav>
+    <div class="container">
+        <input type="file" id="fileInput" accept=".png,.jpeg,.jpg" />
+        <div id="imageContainer"></div>
+        <label for="saturationSlider">Saturation:</label>
+        <input type="range" id="saturationSlider" min="0" max="400" value="100">
+        <label for="brightnessSlider">Brightness:</label>
+        <input type="range" id="brightnessSlider" min="0" max="200" value="100">
+        <button class="button" id="resetButton">Reset</button>
+        <a id="downloadButton" class="button" href="#" onclick="downloadImage()">Download Image</a>
+    </div>
+    <script src="src/imageEditor.js"></script>
 </body>
 </html>
