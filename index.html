@@ -6,16 +6,21 @@
     <title>VividFusion</title>
     <link rel="stylesheet" href="style/font.css">
     <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/navbar.css">
   </head>
   <body>
-    <nav id="MainNavBar">
-      <a id="NavBarTitle" class="NavLink" href="index.html">VividFusion</a>
-      <a id="NavBarEditor" class="NavLink" href="image_edit.html">Editor</a>
-      <a id="NavBarBoard" class="NavLink" href="board.html">Creations</a>
-      <a id="NavBarBoard" class="NavLink" href="Painter.html">Painter</a>
-      <div id="NavProfile"><img id="NavPFP" class="PFP" src="https://avatars.githubusercontent.com/u/115603886?v=4"><span id="NavUsername">Username</span>
+    <nav class="navbar">
+      <div class="navbar-brand">
+          <a href="#">VividFusion</a>
+      </div>
+      <div class="navbar-links" id="NavbarLink"> 
+          <a href="#">Posts</a>
+          <a href="#">Image Editor</a>
+          <a href="#">Paint Editor</a>
+          <a href="login.html" id="SignupNavbar">Sign up</a>
       </div>
     </nav>
-    <script src="src/script.js"></script>
+  
+    <script src="src/authCheck.js"></script>
   </body>
 </html>

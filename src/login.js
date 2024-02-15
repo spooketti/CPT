@@ -60,13 +60,14 @@ document.getElementById("signupForm").addEventListener("submit",function(e)
         }).then(response =>{
             if(response.ok)
             {
-                console.log(response.headers.getSetCookie())
-                console.log(document.cookie)
-                return response.json()
+                return response.text()
             }
             throw new Error("Network response failed")
         }).then(data => {
             console.log("Response:", data);
+            let jwt = JSON.parse(data)
+            localStorage.setItem("jwt",jwt["jwt"])
+            window.location.href = "index.html"
           })
           .catch(error => {
             console.error("There was a problem with the fetch", error);
@@ -99,6 +100,7 @@ document.getElementById("loginForm").addEventListener("submit",function(e){
             console.log("Response:", data);
             let jwt = JSON.parse(data)
             localStorage.setItem("jwt",jwt["jwt"])
+            window.location.href = "index.html"
           })
           .catch(error => {
             console.error("There was a problem with the fetch", error);
