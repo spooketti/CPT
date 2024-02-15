@@ -48,9 +48,120 @@ body {
     float:right;
     color:white;
     transition: all .5s;
+    text-shadow: #150d15 2px 2px;
 }
 
 #navProfile:hover
 {
 background-color: #515151;
+}
+
+#profileMenu
+{
+    padding:10px;
+    position:absolute;
+    margin-top: 5px;
+    right:5px;
+    height:450px;
+    background-color: rgb(54, 54, 54);
+    aspect-ratio: .6/1;
+    border-radius: 20px;
+    color:white;
+    overflow: hidden;
+    display: none;
+}
+
+#profileMenuPFP
+{
+    border-radius: 50%;
+    height:96px;
+    aspect-ratio: 1/1;
+    z-index: 1;
+    position:relative;
+    border:3px solid white;
+}
+
+#profileMenuUsername
+{
+    position:absolute;
+    left:40%;
+    top:5%;
+    font-size: x-large;
+    font-weight:600;
+    z-index: 1;
+    text-shadow: #150d15 2px 2px;
+    text-overflow: ellipsis;
+}
+
+#profileMenuUserID
+{
+    position:absolute;
+    left:40%;
+    top:11%;
+    color:gray;
+    z-index: 1;
+    text-shadow: #150d15 2px 2px;
+    text-overflow: ellipsis;
+}
+
+#profileMenuName
+{
+    position:absolute;
+    left:40%;
+    top:18%;
+    color:white;
+    z-index: 1;
+    text-overflow: ellipsis;
+}
+
+#profileMenuRoleBanner
+{
+    left:0;
+    position:absolute;
+    top:0;
+    width:100%;
+    height:25px;
+    z-index: 0;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-shadow: #150d15 2px 2px;
+    display: flex;
+}
+
+.creatorRole {
+    background: linear-gradient(269deg, #c131db, #b904d9, #9005a9, #c064e9);
+    background-size: 800% 800%;
+
+    -webkit-animation: AnimationName 15s ease infinite;
+    -moz-animation: AnimationName 15s ease infinite;
+    animation: AnimationName 15s ease infinite;
+}
+
+#profileMenuLogout
+{
+    position:absolute;
+    left:0;
+    top:25%;
+    aspect-ratio: 2/1;
+    color:white;
+    font-family: "Montserrat", sans-serif;
+    height:50px;
+    border:none;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
 }

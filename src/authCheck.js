@@ -1,7 +1,19 @@
 let jwt = localStorage.getItem("jwt")
 let profileView = document.getElementById("SignupNavbar")
 let endpoint = "http://127.0.0.1:8086//checkAuth"
+let pm = document.getElementById("profileMenu")
+let pmName = document.getElementById("profileMenuName")
+let pmUsername = document.getElementById("profileMenuUsername")
+let pmPFP= document.getElementById("profileMenuPFP")
+let pmUserID = document.getElementById("profileMenuUserID")
+let pmBanner = document.getElementById("profileMenuRoleBanner")
 let navLink = document.getElementById("NavbarLink")
+let displayJSON = 
+{
+ true:"block",
+ false:"none" 
+}
+let visibility = false
     fetch(endpoint,
         {
             method:"GET",
@@ -26,13 +38,18 @@ let navLink = document.getElementById("NavbarLink")
             let navProfile = document.createElement("div")
             navProfile.id = "navProfile"
             navLink.appendChild(navProfile)
+            pmPFP.src = data["pfp"]
             let navpfp = document.createElement("img")
             navpfp.src = data["pfp"]
             navpfp.className = "navPFP"
             navProfile.appendChild(navpfp)
             let navspan = document.createElement("span")
             navspan.innerText = data["username"]
+            pmUserID.innerText = data["userID"]
+            pmName.innerText = data["name"]
+            pmUsername.innerText = data["username"]
             navProfile.appendChild(navspan)
+            navProfile.onclick = panic
                 
           })
           .catch(error => {
@@ -43,3 +60,14 @@ let navLink = document.getElementById("NavbarLink")
            }
           });   
 
+function panic()
+{
+  visibility = !visibility
+  pm.style.display = displayJSON[visibility]
+}
+
+function logout()
+{
+  localStorage.removeItem("jwt")
+  window.location.reload()
+}
