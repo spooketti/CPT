@@ -1,5 +1,6 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -7,19 +8,94 @@
     <link rel="stylesheet" href="style/font.css">
     <link rel="stylesheet" href="style/index.css">
     <link rel="stylesheet" href="style/navbar.css">
-  </head>
-  <body>
+    <style>
+        /* Centered header with large font */
+        #canvas-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        h1 {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+        }
+        h2 {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 30px;
+      }
+    </style>
+</head>
+<body>
     <nav class="navbar">
-      <div class="navbar-brand">
-          <a href="index.html">VividFusion</a>
-      </div>
-      <div class="navbar-links" id="NavbarLink"> 
-          <a href="#">Posts</a>
-          <a href="image_edit.html">Image Editor</a>
-          <a href="Painter.html">Paint Editor</a>
-          <a href="login.html" id="SignupNavbar">Sign up</a>
-      </div>
+        <div class="navbar-brand">
+            <a href="index.html">VividFusion</a>
+        </div>
+        <div class="navbar-links" id="NavbarLink">
+            <a href="#">Posts</a>
+            <a href="image_edit.html">Image Editor</a>
+            <a href="Painter.html">Paint Editor</a>
+            <a href="login.html" id="SignupNavbar">Sign up</a>
+        </div>
     </nav>
+    <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+        <h1>Vivid Fusion Studio</h1>
+        <h2>Unleash Your Artistic Mind</h2>
+    </div>
+    <script>
+        // Get canvas element
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        // Set canvas dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        // Load background image
+        var background = new Image();
+        background.src = "images/background.png";
+        // Define background parameters
+        var bgWidth = canvas.width; // Width of the background image
+        var bgHeight = canvas.height; // Height of the canvas
+        var speed = 1; // Speed of panorama motion
+        // Initial position of the background
+        var xPos = 0;
+        // Function to draw the background
+        function draw() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw background images
+            ctx.drawImage(background, xPos, 0, bgWidth, bgHeight);
+            ctx.drawImage(background, xPos + bgWidth, 0, bgWidth, bgHeight);
+            // Update position
+            xPos -= speed;
+            // Check if the first background image is completely off-screen
+            if (xPos <= -bgWidth) {
+                // Reset its position to the right end of the screen
+                xPos += bgWidth;
+            } else if (xPos >= 0) {
+                // If the second background image is completely off-screen to the left, reset its position to the right end of the screen
+                xPos -= bgWidth;
+            }
+            // Request animation frame
+            requestAnimationFrame(draw);
+        }
+        // Start drawing
+        background.onload = function () {
+            draw();
+        };
+        // Adjust canvas dimensions if the window is resized
+        window.addEventListener("resize", function () {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            bgHeight = canvas.height;
+        });
+    </script>
+</body>
 
     <div id="profileMenu">
     <div id="profileMenuRoleBanner" class="creatorRole">Creator</div>
@@ -33,3 +109,12 @@
     <script src="src/authCheck.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
