@@ -43,71 +43,25 @@
             <a href="login.html" id="SignupNavbar">Sign up</a>
         </div>
     </nav>
+
+    <div id="profileMenu">
+      <div id="profileMenuRoleBanner" class="creatorRole">Creator</div>
+      <img id="profileMenuPFP" src="assets/img/DefaultPFP.png">
+      <span id="profileMenuUsername">Debug</span>
+      <span id="profileMenuUserID">@default</span>
+      <span id="profileMenuName">John Doe</span>
+      <button id="profileMenuLogout"  class="creatorRole" onclick="logout()">Logout</button>
+      </div>
+
+      
     <div id="canvas-container">
         <canvas id="canvas"></canvas>
         <h1>Vivid Fusion Studio</h1>
         <h2>Unleash Your Artistic Mind</h2>
     </div>
-    <script>
-        // Get canvas element
-        var canvas = document.getElementById("canvas");
-        var ctx = canvas.getContext("2d");
-        // Set canvas dimensions
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        // Load background image
-        var background = new Image();
-        background.src = "images/background.png";
-        // Define background parameters
-        var bgWidth = canvas.width; // Width of the background image
-        var bgHeight = canvas.height; // Height of the canvas
-        var speed = 1; // Speed of panorama motion
-        // Initial position of the background
-        var xPos = 0;
-        // Function to draw the background
-        function draw() {
-            // Clear canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // Draw background images
-            ctx.drawImage(background, xPos, 0, bgWidth, bgHeight);
-            ctx.drawImage(background, xPos + bgWidth, 0, bgWidth, bgHeight);
-            // Update position
-            xPos -= speed;
-            // Check if the first background image is completely off-screen
-            if (xPos <= -bgWidth) {
-                // Reset its position to the right end of the screen
-                xPos += bgWidth;
-            } else if (xPos >= 0) {
-                // If the second background image is completely off-screen to the left, reset its position to the right end of the screen
-                xPos -= bgWidth;
-            }
-            // Request animation frame
-            requestAnimationFrame(draw);
-        }
-        // Start drawing
-        background.onload = function () {
-            draw();
-        };
-        // Adjust canvas dimensions if the window is resized
-        window.addEventListener("resize", function () {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            bgHeight = canvas.height;
-        });
-    </script>
-</body>
-
-    <div id="profileMenu">
-    <div id="profileMenuRoleBanner" class="creatorRole">Creator</div>
-    <img id="profileMenuPFP" src="assets/img/DefaultPFP.png">
-    <span id="profileMenuUsername">Debug</span>
-    <span id="profileMenuUserID">@default</span>
-    <span id="profileMenuName">John Doe</span>
-    <button id="profileMenuLogout"  class="creatorRole" onclick="logout()">Logout</button>
-    </div>
-  
+    <script src="src/movingBG.js"></script>
     <script src="src/authCheck.js"></script>
-  </body>
+</body>
 </html>
 
 

@@ -54,10 +54,12 @@ let visibility = false
           })
           .catch(error => {
             console.error("There was a problem with the fetch", error);
+            /*
            if(window.location.pathname != "/")
            {
             window.location.href = "index.html"
            }
+           */
           });   
 
 function panic()

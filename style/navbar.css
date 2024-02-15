@@ -1,4 +1,4 @@
-body {
+ody {
     margin: 0;
     font-family: "Montserrat", sans-serif;
 }
@@ -68,6 +68,7 @@ background-color: #515151;
     border-radius: 20px;
     color:white;
     overflow: hidden;
+    z-index: 2;
     display: none;
 }
 
@@ -141,7 +142,7 @@ background-color: #515151;
 #profileMenuLogout
 {
     position:absolute;
-    left:0;
+    left:10%;
     top:25%;
     aspect-ratio: 2/1;
     color:white;
