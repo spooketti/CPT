@@ -166,6 +166,18 @@ background-color: #515151;
     border:none;
 }
 
+#profileMenuChangeMenu
+{
+    position:absolute;
+    left:10%;
+    top:40%;
+    aspect-ratio: 2/1;
+    color:white;
+    font-family: "Montserrat", sans-serif;
+    height:50px;
+    border:none;
+}
+
 @-webkit-keyframes AnimationName {
     0%{background-position:0% 51%}
     50%{background-position:100% 50%}

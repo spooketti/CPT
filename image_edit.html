@@ -21,6 +21,15 @@
             <a href="login.html" id="SignupNavbar">Sign up</a>
         </div>
     </nav>
+    <div id="profileMenu">
+        <div id="profileMenuRoleBanner" class="creatorRole">Missing</div>
+        <img id="profileMenuPFP" src="assets/img/DefaultPFP.png">
+        <span id="profileMenuUsername">Debug</span>
+        <span id="profileMenuUserID">@default</span>
+        <span id="profileMenuName">John Doe</span>
+        <button id="profileMenuLogout"  class="creatorRole" onclick="logout()">Logout</button>
+        <div id="profileMenuChangeMenu"></div>
+      </div>
     <div class="container">
         <input type="file" id="fileInput" accept=".png,.jpeg,.jpg" />
         <div id="imageContainer"></div>
@@ -31,6 +40,7 @@
         <button class="button" id="resetButton">Reset</button>
         <a id="downloadButton" class="button" href="#" onclick="downloadImage()">Download Image</a>
     </div>
+    <script src="src/authCheck.js"></script>
     <script src="src/imageEditor.js"></script>
 </body>
 </html>

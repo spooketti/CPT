@@ -8,6 +8,8 @@ let pmPFP= document.getElementById("profileMenuPFP")
 let pmUserID = document.getElementById("profileMenuUserID")
 let pmBanner = document.getElementById("profileMenuRoleBanner")
 let navLink = document.getElementById("NavbarLink")
+let logoutButton = document.getElementById("profileMenuLogout")
+let pmChangeDiv = document.getElementById("profileMenuChangeMenu")
 let displayJSON = 
 {
  true:"block",
@@ -53,10 +55,12 @@ let visibility = false
             {
               case "Creator":
                 pmBanner.className = "creatorRole"
+                logoutButton.className = "creatorRole"
               break;
 
               case "Admin":
                 pmBanner.className = "adminRole"
+                logoutButton.className = "adminRole"
               break;
             }
             navProfile.appendChild(navspan)
