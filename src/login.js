@@ -3,8 +3,8 @@ let signupUI = document.getElementById("SignupUI")
 
 let loginGreetingElement = document.getElementById("LoginGreeting")
 let signupGreetingElement = document.getElementById("SignupGreeting")
-let loginServer = "http://127.0.0.1:8086//login"
-let signupServer = "http://127.0.0.1:8086//signup"
+let loginServer = "http://10.8.137.105:8086///login"
+let signupServer = "http://10.8.137.105:8086///signup"
 let isLoginUI = true;
 let pfpUploadEl = document.getElementById("fileUploadLogin")
 let pfpPreview = document.getElementById("LoginPFPPreview")
