@@ -47,8 +47,14 @@ ody {
     align-items: center;
     float:right;
     color:white;
-    transition: all .5s;
+    transition: all .25s;
     text-shadow: #150d15 2px 2px;
+    cursor: pointer;
+}
+
+#navProfile:active
+{
+    filter:brightness(150%);
 }
 
 #navProfile:hover
@@ -132,6 +138,15 @@ background-color: #515151;
 
 .creatorRole {
     background: linear-gradient(269deg, #c131db, #b904d9, #9005a9, #c064e9);
+    background-size: 800% 800%;
+
+    -webkit-animation: AnimationName 15s ease infinite;
+    -moz-animation: AnimationName 15s ease infinite;
+    animation: AnimationName 15s ease infinite;
+}
+
+.adminRole {
+    background: linear-gradient(269deg, #db3131, #d90404, #a90505, #e96464);
     background-size: 800% 800%;
 
     -webkit-animation: AnimationName 15s ease infinite;

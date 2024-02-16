@@ -6,7 +6,7 @@
  canvas.height = window.innerHeight;
  // Load background image
  var background = new Image();
- background.src = "images/background.png";
+ background.src = "assets/img/background.png";
  // Define background parameters
  var bgWidth = canvas.width; // Width of the background image
  var bgHeight = canvas.height; // Height of the canvas
@@ -17,7 +17,7 @@
  function draw() {
      // Clear canvas
      ctx.clearRect(0, 0, canvas.width, canvas.height);
-     // Draw background images
+     // Draw background img
      ctx.drawImage(background, xPos, 0, bgWidth, bgHeight);
      ctx.drawImage(background, xPos + bgWidth, 0, bgWidth, bgHeight);
      // Update position

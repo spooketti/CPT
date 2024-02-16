@@ -67,36 +67,36 @@
     function displayAnswerImage(choice) {
       switch (choice) {
         case 'Cat':
-          drawImageOnCanvas('images/fill-in-cat.png');
+          drawImageOnCanvas('img/fill-in-cat.png');
           break;
         case 'Cookie':
-          drawImageOnCanvas('images/fill-in-cookie.png');
+          drawImageOnCanvas('img/fill-in-cookie.png');
           break;
         case 'House':
-          drawImageOnCanvas('images/fill-in-house.png');
+          drawImageOnCanvas('img/fill-in-house.png');
           break;
       }
     }
     // puts image on canvas
-    function drawImageOnCanvas(imageSource) {
+    function drawImageOnCanvas(imgource) {
       const img = new Image();
       img.onload = function() {
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       };
-      img.src = imageSource;
+      img.src = imgource;
     }
     drawingChoices.forEach(function(choice) {
       choice.addEventListener('change', function() {
         var selectedChoice = document.querySelector('input[name="drawingChoice"]:checked').value;
         switch (selectedChoice) {
           case 'Cat':
-            drawImageOnCanvas('images/fill-in-cat.png');
+            drawImageOnCanvas('img/fill-in-cat.png');
             break;
           case 'Cookie':
-            drawImageOnCanvas('images/fill-in-cookie.png');
+            drawImageOnCanvas('img/fill-in-cookie.png');
             break;
           case 'House':
-            drawImageOnCanvas('images/fill-in-house.png');
+            drawImageOnCanvas('img/fill-in-house.png');
             break;
         }
       });

@@ -48,6 +48,17 @@ let visibility = false
             pmUserID.innerText = data["userID"]
             pmName.innerText = data["name"]
             pmUsername.innerText = data["username"]
+            pmBanner.innerText = data["role"]
+            switch(data["role"])
+            {
+              case "Creator":
+                pmBanner.className = "creatorRole"
+              break;
+
+              case "Admin":
+                pmBanner.className = "adminRole"
+              break;
+            }
             navProfile.appendChild(navspan)
             navProfile.onclick = panic
                 
