@@ -158,24 +158,73 @@ background-color: #515151;
 {
     position:absolute;
     left:10%;
-    top:25%;
+    bottom:1%;
+}
+
+#profileMenuApplyChange
+{
+    position: absolute;
+    right:10%;
+    bottom:1%;
+}
+
+.profileMenuButton
+{
     aspect-ratio: 2/1;
-    color:white;
+    color: white;
     font-family: "Montserrat", sans-serif;
-    height:50px;
-    border:none;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    transition: all .25s;
+}
+
+.profileMenuButton:hover
+{
+filter:brightness(150%);
 }
 
 #profileMenuChangeMenu
 {
     position:absolute;
     left:10%;
-    top:40%;
+    top:25%;
     aspect-ratio: 2/1;
     color:white;
     font-family: "Montserrat", sans-serif;
     height:50px;
     border:none;
+    width:100%;
+}
+
+#profileMenuChangeMenu input
+{
+    padding: 7px;
+    margin: 1% 0;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #444444;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#changePreviewPFP
+{
+    border-radius: 50%;
+    position:absolute;
+    left:10%;
+    bottom:13%;
+    height:75px;
+    aspect-ratio: 1/1;
+}
+
+#changePFPButton
+{
+    position: absolute;
+    right:10%;
+    bottom:15%;
 }
 
 @-webkit-keyframes AnimationName {

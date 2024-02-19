@@ -3,8 +3,8 @@ let signupUI = document.getElementById("SignupUI")
 
 let loginGreetingElement = document.getElementById("LoginGreeting")
 let signupGreetingElement = document.getElementById("SignupGreeting")
-let loginServer = "http://10.8.137.105:8086///login"
-let signupServer = "http://10.8.137.105:8086///signup"
+let loginServer = "http://127.0.0.1:8086///login"
+let signupServer = "http://127.0.0.1:8086///signup"
 let isLoginUI = true;
 let pfpUploadEl = document.getElementById("fileUploadLogin")
 let pfpPreview = document.getElementById("LoginPFPPreview")
@@ -115,34 +115,6 @@ function genLoginGreet()
 function genSignupGreet()
 {
     signupGreetingElement.innerText = signupGreetings[Math.floor(Math.random())*signupGreetings.length]
-}
-
-function dummy()
-{
-    let payload = {
-        "userID":"spooketti"
-    }
-    fetch("http://127.0.0.1:8086//updateUser",
-        {
-            method:"POST",
-            headers: {
-                "Content-Type": "application/json",
-                'Authorization': `Bearer ${localStorage.getItem("jwt")}`,
-              },
-            credentials: "include",
-            body: JSON.stringify(payload)
-        }).then(response =>{
-            if(response.ok)
-            {
-                return response.text()
-            }
-            throw new Error("Network response failed")
-        }).then(data => {
-            console.log("Response:", data);
-          })
-          .catch(error => {
-            console.error("There was a problem with the fetch", error);
-          });
 }
 
 function uploadPFP()

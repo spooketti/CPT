@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="style/index.css">
     <link rel="stylesheet" href="style/navbar.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-brand">
@@ -23,31 +25,38 @@
     </nav>
 
     <div id="profileMenu">
-      <div id="profileMenuRoleBanner" class="creatorRole">Missing</div>
-      <img id="profileMenuPFP" src="assets/img/DefaultPFP.png">
-      <span id="profileMenuUsername">Debug</span>
-      <span id="profileMenuUserID">@default</span>
-      <span id="profileMenuName">John Doe</span>
-      <button id="profileMenuLogout"  class="creatorRole" onclick="logout()">Logout</button>
-      <div id="profileMenuChangeMenu"></div>
+        <div id="profileMenuRoleBanner" class="creatorRole">Missing</div>
+        <img id="profileMenuPFP" src="assets/img/DefaultPFP.png">
+        <span id="profileMenuUsername">Debug</span>
+        <span id="profileMenuUserID">@default</span>
+        <span id="profileMenuName">John Doe</span>
+        <div id="profileMenuChangeMenu">
+            <span>Change Account Data</span>
+            <br>
+            <span style="font-size:small">Only completed fields are changed!</span>
+            <br>
+            <span style="font-size:x-small">Password Required!</span>
+            <br>
+            <input type="text" placeholder="Change Display Name" id="changeDisplayName">
+            <input type="text" placeholder="Change Name" id="changeName">
+            <input type="password" placeholder="Enter Old Password" id="changeOldPW">
+            <input type="password" placeholder="Enter New Password" id="changeNewPW">
+        </div>
+        <img id="changePreviewPFP" src="assets/img/DefaultPFP.png">
+        <button id="profileMenuLogout" class="profileMenuButton" onclick="logout()">Log Out</button>
+        <button id="profileMenuApplyChange" class="profileMenuButton" onclick="applyChanges()">Apply Changes</button>
+        <button id="changePFPButton" class="profileMenuButton" onclick="uploadPFPChange()">Change Profile Picture</button>
+        <input type="file" id="changeFile" style="display:none">
     </div>
 
-      
+
     <div id="canvas-container">
         <canvas id="canvas"></canvas>
         <h1>Vivid Fusion Studio</h1>
         <h2>Unleash Your Artistic Mind</h2>
     </div>
     <script src="src/movingBG.js"></script>
-    <script src="src/authCheck.js"></script>
+    <script src="src/auth.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
