@@ -15,3 +15,174 @@ html,body
     background-color: black;
     height:100%;
 }
+
+#CreatePost
+{
+    position: fixed;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    z-index: 1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#ModalClose
+{
+    position:absolute;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    background-color: rgb(27, 15, 0);
+    opacity: 50%;
+}
+#PostPrompt
+{
+    border-radius: 3%;
+    z-index: 2;
+    width:40%;
+    aspect-ratio: 1/1;
+    background-color: rgb(31, 30, 30);
+    border:3px solid white;
+    color:white;
+}
+
+#PostHead
+{
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    border-bottom:1px solid rgba(217, 217, 217, 0.273);
+    width:100%;
+    height:10%;
+    align-items: center;
+    justify-content: left;
+    gap:1%;
+    padding: 1%;
+}
+
+#PostBody
+{
+    position: relative;
+    left:0;
+    height:80%;
+    width:100%;
+    overflow-y:scroll;
+    overflow-x: hidden;
+}
+
+#PostHeadPFP
+{
+    height:50%;
+    width:auto;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border:2px solid white;
+}
+
+/*bro what happend*/
+
+#PostBodyInput
+{
+    position: relative;
+    left:0;
+    height:10%;
+    width:98%;
+    padding: 1%;
+    margin:0;
+    border:0;
+    overflow: hidden;
+    white-space: pre-wrap;
+    background-color: rgb(55, 55, 55);
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    caret-color: white;
+    resize:none;
+}
+
+#PostBodyImage
+{
+    position: relative;
+    top:0;
+    left:0;
+    width:100%;
+    height:auto;
+    margin:0;
+    border:0;
+    overflow: hidden;
+    white-space: pre-wrap;
+    background-color: rgb(104, 101, 101);
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    caret-color: white;
+    resize:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#PostFooter
+{
+    position: relative;
+    left:0;
+    height:10%;
+    width:100%;
+}
+#PostFooterPostButton
+{
+    background-color: orange;
+    border-radius: 10% / 80%;
+    height: 50%;
+    width: 20%;
+    position: relative;
+    top:25%;
+    left: 70%;
+    color:black;
+    border:none;
+    font-family: 'Montserrat', sans-serif;
+    transition: all .5s;
+}
+
+#PostFooterImageButton
+{
+    background-color: orange;
+    border-radius: 10% / 80%;
+    height: 50%;
+    width: 20%;
+    position: relative;
+    top:25%;
+    color:black;
+    border:none;
+    font-family: 'Montserrat', sans-serif;
+    transition: all .5s;
+}
+
+#PostFooterPostButton:hover
+{
+    background-color: rgb(255, 102, 0);
+    color:white;
+}
+
+
+#PostFooterImageButton:hover
+{
+    background-color: rgb(255, 102, 0);
+    color:white;
+}
+
+#PostBodyNoImage
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    height:80%;
+    width:100%;
+}

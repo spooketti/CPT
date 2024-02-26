@@ -1,20 +1,46 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>VividFusion</title>
-    <link rel="stylesheet" href="style/font.css">
-    <link rel="stylesheet" href="style/editor.css">
-  </head>
-  <body>
-    <nav id="FileNav"></nav>
-    <nav id="ToolNav"></nav>
-    <canvas id="editor">
-
-    </canvas>
-    <script src="src/init.js"></script>
-    <script src="src/drag.js"></script>
-    <script src="src/editor.js"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Editor</title>
+<link rel="stylesheet" href="style/font.css">
+<link rel="stylesheet" href="style/index.css">
+<link rel="stylesheet" href="style/navbar.css">    
+<link rel="stylesheet" href="style/editor.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="index.html">VividFusion</a>
+        </div>
+        <div class="navbar-links" id="NavbarLink">
+            <a href="#">Posts</a>
+            <a href="editor.html">Image Editor</a>
+            <a href="Painter.html">Paint Editor</a>
+            <a href="login.html" id="SignupNavbar">Sign up</a>
+        </div>
+    </nav>
+    <div id="profileMenu">
+        <div id="profileMenuRoleBanner" class="creatorRole">Missing</div>
+        <img id="profileMenuPFP" src="assets/img/DefaultPFP.png">
+        <span id="profileMenuUsername">Debug</span>
+        <span id="profileMenuUserID">@default</span>
+        <span id="profileMenuName">John Doe</span>
+        <button id="profileMenuLogout"  class="creatorRole" onclick="logout()">Logout</button>
+        <div id="profileMenuChangeMenu"></div>
+      </div>
+    <div class="container">
+        <input type="file" id="fileInput" accept=".png,.jpeg,.jpg" />
+        <div id="imageContainer"></div>
+        <label for="saturationSlider">Saturation:</label>
+        <input type="range" id="saturationSlider" min="0" max="400" value="100">
+        <label for="brightnessSlider">Brightness:</label>
+        <input type="range" id="brightnessSlider" min="0" max="200" value="100">
+        <button class="button" id="resetButton">Reset</button>
+        <a id="downloadButton" class="button" href="#" onclick="downloadImage()">Download Image</a>
+    </div>
+    <script src="src/auth.js"></script>
+    <script src="src/imageEditor.js"></script>
+</body>
 </html>

@@ -42,9 +42,16 @@ fetch(endpoint,
 
       return response.json()
     }
+    clearGlobalUser()
     throw new Error("Network response failed")
   }).then(data => {
     console.log("Response:", data);
+    localStorage.setItem("globalPFP", data["pfp"])
+    localStorage.setItem("globalUsername", data["username"])
+    localStorage.setItem("globalRole", data["role"])
+    localStorage.setItem("globalName", data["name"])
+    localStorage.setItem("globalUserID", data["userID"])
+
     let navProfile = document.createElement("div")
     navProfile.id = "navProfile"
     navLink.appendChild(navProfile)
@@ -81,6 +88,7 @@ fetch(endpoint,
 
   })
   .catch(error => {
+    clearGlobalUser()
     console.error("There was a problem with the fetch", error);
     /*
    if(window.location.pathname != "/")
@@ -96,7 +104,7 @@ function showUserProfile() {
 }
 
 function logout() {
-  localStorage.removeItem("jwt")
+  localStorage.clear()
   window.location.reload()
 }
 
@@ -163,3 +171,10 @@ pmChangeFile.addEventListener('change', function (event) {
     reader.readAsDataURL(file); // Read the file as a data URL
   }
 });
+
+function clearGlobalUser()
+{
+  let jwtClone = jwt
+  localStorage.clear()
+  localStorage.setItem("jwt",jwtClone)
+}

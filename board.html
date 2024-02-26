@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -7,15 +9,75 @@
     <link rel="stylesheet" href="style/font.css">
     <link rel="stylesheet" href="style/navbar.css">
     <link rel="stylesheet" href="style/board.css">
-  </head>
-  <body>
-    <nav id="Navbar">
-      <a id="NavbarTitle">VividFusion</a>
-      <img id="NavbarProfile" src="https://avatars.githubusercontent.com/u/115603886?v=4">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="index.html">VividFusion</a>
+        </div>
+        <div class="navbar-links" id="NavbarLink">
+            <button onclick="openPostCreate()">Create Post</button>
+            <a href="editor.html">Image Editor</a>
+            <a href="painter.html">Paint Editor</a>
+            <a href="login.html" id="SignupNavbar">Sign up</a>
+        </div>
     </nav>
-    <div id="Content">
-      
+
+    <div id="profileMenu">
+        <div id="profileMenuRoleBanner" class="creatorRole">Missing</div>
+        <img id="profileMenuPFP" src="assets/img/DefaultPFP.png">
+        <span id="profileMenuUsername">Debug</span>
+        <span id="profileMenuUserID">@default</span>
+        <span id="profileMenuName">John Doe</span>
+        <div id="profileMenuChangeMenu">
+            <span>Change Account Data</span>
+            <br>
+            <span style="font-size:small">Only completed fields are changed!</span>
+            <br>
+            <span style="font-size:x-small">Password Required!</span>
+            <br>
+            <input type="text" placeholder="Change Display Name" id="changeDisplayName">
+            <input type="text" placeholder="Change Name" id="changeName">
+            <input type="password" placeholder="Enter Old Password" id="changeOldPW">
+            <input type="password" placeholder="Enter New Password" id="changeNewPW">
+        </div>
+
+        <img id="changePreviewPFP" src="assets/img/DefaultPFP.png">
+        <button id="profileMenuLogout" class="profileMenuButton" onclick="logout()">Log Out</button>
+        <button id="profileMenuApplyChange" class="profileMenuButton" onclick="applyChanges()">Apply Changes</button>
+        <button id="changePFPButton" class="profileMenuButton" onclick="uploadPFPChange()">Change Profile Picture</button>
+        <input type="file" id="changeFile" style="display:none">
     </div>
-    <script src="src/script.js"></script>
-  </body>
+
+    <div id="CreatePost">
+      <div id="ModalClose"></div>
+      <div id="PostPrompt">
+        <div id="PostHead">
+          <button style="background:none; border:none; cursor:pointer; color:white;" onclick="closeMenu()">X</button>
+          <span id="PostHeadUsername">Posting As Spooketti</span>
+          <img id="PostHeadPFP" src="">
+        </div>
+        <div id="PostBody">
+          <textarea id="PostBodyInput" placeholder="Your Image Caption..."></textarea>
+          <img id="PostBodyImage">
+          <div id="PostBodyNoImage">Upload An Image!</div>
+        </div>
+        <div id="PostFooter">
+          <button id="PostFooterPostButton" onclick="submitPost()">Post</button>
+          <button id="PostFooterImageButton" onclick="submitImage()">Upload Image</button>
+          <input type="file" id="PostFile" style="display:none" accept=".png,.jpeg,.jpg,.gif">
+        </div>
+        
+      </div>
+    </div>
+
+    <div id="sub">
+
+    </div>
+
+    <script src="src/auth.js"></script>
+    <script src="src/post.js"></script>
+</body>
+
 </html>
