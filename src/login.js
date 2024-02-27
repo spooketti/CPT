@@ -3,8 +3,8 @@ let signupUI = document.getElementById("SignupUI")
 
 let loginGreetingElement = document.getElementById("LoginGreeting")
 let signupGreetingElement = document.getElementById("SignupGreeting")
-let loginServer = "http://127.0.0.1:8086///login"
-let signupServer = "http://127.0.0.1:8086///signup"
+let loginServer = "https://spooketti.pythonanywhere.com/login"
+let signupServer = "https://spooketti.pythonanywhere.com/signup"
 let isLoginUI = true;
 let pfpUploadEl = document.getElementById("fileUploadLogin")
 let pfpPreview = document.getElementById("LoginPFPPreview")
@@ -143,7 +143,7 @@ pfpUploadEl.addEventListener('change', function(event) {
 });
 
 let xhr = new XMLHttpRequest();       
-    xhr.open("GET", "../assets/img/DefaultPFP.png", true); 
+    xhr.open("GET", "https://spooketti.github.io/portfolio/assets/images/favicon.ico", true); 
     xhr.responseType = "blob";
     xhr.onload = function () {
             let reader = new FileReader();

@@ -186,3 +186,40 @@ html,body
     height:80%;
     width:100%;
 }
+
+#PostDirectory
+{
+    width:100%;
+    height:100%;
+    background-color: rgb(73, 73, 73);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#NavBoardLeft,
+#NavBoardRight {
+    width: 20%;
+    height:100%;
+    background-color: rgb(41, 41, 41);
+}
+
+#NavBoardCenter {
+    width: 60%;
+}
+
+/* Media query for smaller viewports */
+@media screen and (max-width: 768px) {
+    #PostDirectory {
+        flex-direction: column;
+    }
+
+    #NavBoardLeft,
+    #NavBoardRight {
+        display: none;
+    }
+
+    #NavBoardCenter {
+        width: 100%;
+    }
+}

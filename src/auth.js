@@ -1,6 +1,6 @@
 let jwt = localStorage.getItem("jwt")
 let profileView = document.getElementById("SignupNavbar")
-let endpoint = "http://127.0.0.1:8086////checkAuth"
+let endpoint = "https://spooketti.pythonanywhere.com/checkAuth"
 let pm = document.getElementById("profileMenu")
 let pmName = document.getElementById("profileMenuName")
 let pmUsername = document.getElementById("profileMenuUsername")

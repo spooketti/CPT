@@ -6,6 +6,7 @@ let postImagePreview = document.getElementById("PostBodyImage")
 let postNoImage = document.getElementById("PostBodyNoImage")
 let postBodyInput = document.getElementById("PostBodyInput")
 let uploadServer = "http://127.0.0.1:8086///createPost"
+let getServer = "http://127.0.0.1:8086///getPosts?page=1"
 
 function openPostCreate()
 {
@@ -71,12 +72,39 @@ function submitPost()
       console.log("Response:", data);
       if(data == "Success")
       {
-        //window.location.reload()
+        closeMenu()
       }
 
     })
     .catch(error => {
       console.error("There was a problem with the fetch", error);
     });
+}
 
+function getPosts()
+{
+  fetch(getServer,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }).then(response => {
+      if (response.ok) {
+        return response.json()
+      }
+      throw new Error("Network response failed")
+    }).then(data => {
+      console.log("Response:", data);
+      console.log(data.posts)
+      for(let i=0;i<data.posts.length;i++)
+      {
+        console.log(data.posts[i])
+      }
+
+    })
+    .catch(error => {
+      console.error("There was a problem with the fetch", error);
+    });
 }
