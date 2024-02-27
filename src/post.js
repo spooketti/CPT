@@ -2,6 +2,7 @@ let postMenu = document.getElementById("CreatePost")
 let postHeadPFP = document.getElementById("PostHeadPFP")
 let postHeadUsername = document.getElementById("PostHeadUsername")
 let postFile = document.getElementById("PostFile")
+let postBody = document.getElementById("PostBody")
 let postImagePreview = document.getElementById("PostBodyImage")
 let postNoImage = document.getElementById("PostBodyNoImage")
 let postBodyInput = document.getElementById("PostBodyInput")
@@ -50,6 +51,14 @@ function submitPost() {
     "caption": postBodyInput.value,
     "image": postImagePreview.src,
   }
+  postBodyInput.value = ""
+  postImagePreview.src = ""
+  let box = document.createElement("div")
+  box.innerText = "Upload An Image!"
+  box.id = "PostBodyNoImage"
+  postBody.appendChild(box)
+  postNoImage = document.getElementById("PostBodyNoImage")
+  closeMenu()
   fetch(uploadServer,
     {
       method: "POST",
@@ -66,9 +75,6 @@ function submitPost() {
       throw new Error("Network response failed")
     }).then(data => {
       console.log("Response:", data);
-      if (data == "Success") {
-        closeMenu()
-      }
 
     })
     .catch(error => {
