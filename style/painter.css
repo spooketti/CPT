@@ -33,6 +33,8 @@ body {
     justify-content: center;
   }
 
+
+
   /* Question container styles */
   #questionContainer {
     background-color: #fff;
@@ -90,7 +92,8 @@ body {
   /* Canvas styles */
   canvas {
     border: 5px solid #6c63ff;
-    margin: 20px;
+    margin: 100px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+    background-color: #ffffff;
   }
