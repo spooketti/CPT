@@ -1,6 +1,7 @@
 let jwt = localStorage.getItem("jwt")
 let profileView = document.getElementById("SignupNavbar")
 let endpoint = "https://spooketti.pythonanywhere.com/checkAuth"
+let updateEndpoint = "https://spooketti.pythonanywhere.com/updateUser"
 let pm = document.getElementById("profileMenu")
 let pmName = document.getElementById("profileMenuName")
 let pmUsername = document.getElementById("profileMenuUsername")
@@ -105,7 +106,7 @@ function showUserProfile() {
 
 function logout() {
   localStorage.clear()
-  window.location.reload()
+  window.location.href = "index.html"
 }
 
 function applyChanges() {
@@ -122,7 +123,7 @@ function applyChanges() {
     "pfp":dPfp
 
   }
-  fetch("http://127.0.0.1:8086//updateUser",
+  fetch(updateEndpoint,
     {
       method: "POST",
       headers: {
@@ -140,7 +141,7 @@ function applyChanges() {
       console.log("Response:", data);
       if(data == "Success")
       {
-        //window.location.reload()
+        window.location.reload()
       }
 
     })
