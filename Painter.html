@@ -146,6 +146,18 @@
   
   <!-- Drawing container -->
   <div id="drawingContainer">
+    <!-- Question container -->
+    <div id="questionContainer">
+      <!-- Question -->
+      <h2 id="question">What do you want to draw?</h2>
+      <!-- Drawing options -->
+      <input type="radio" id="cat" name="drawingChoice" value="Cat">
+      <label for="cat">Cat</label><br>
+      <input type="radio" id="cookie" name="drawingChoice" value="Cookie">
+      <label for="cookie">Cookie</label><br>
+      <input type="radio" id="house" name="drawingChoice" value="House">
+      <label for="house">House</label><br>
+    </div>
     <!-- Canvas -->
     <canvas id="drawingCanvas" width="800" height="600"></canvas>
     <!-- Color selectors -->
@@ -185,5 +197,21 @@
 <!-- js -->
   <script src="src/painter.js"> </script>
   <script src="src/auth.js"></script>
+
+  <script>
+    // Get the drawing options
+    const drawingOptions = document.querySelectorAll('input[name="drawingChoice"]');
+
+    // Function to hide the question text when an answer is clicked
+    function hideQuestionText() {
+      const questionText = document.getElementById('question');
+      questionText.style.display = 'none';
+    }
+
+    // Add click event listeners to each drawing option
+    drawingOptions.forEach(option => {
+      option.addEventListener('click', hideQuestionText);
+    });
+  </script>
 </body>
 </html>

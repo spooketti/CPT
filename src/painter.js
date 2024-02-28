@@ -67,13 +67,13 @@
     function displayAnswerImage(choice) {
       switch (choice) {
         case 'Cat':
-          drawImageOnCanvas('img/fill-in-cat.png');
+          drawImageOnCanvas('assets/img/fill-in-cat.png');
           break;
         case 'Cookie':
-          drawImageOnCanvas('img/fill-in-cookie.png');
+          drawImageOnCanvas('assets/img/fill-in-cookie.png');
           break;
         case 'House':
-          drawImageOnCanvas('img/fill-in-house.png');
+          drawImageOnCanvas('assets/img/fill-in-house.png');
           break;
       }
     }
@@ -90,13 +90,13 @@
         var selectedChoice = document.querySelector('input[name="drawingChoice"]:checked').value;
         switch (selectedChoice) {
           case 'Cat':
-            drawImageOnCanvas('img/fill-in-cat.png');
+            drawImageOnCanvas('assets/img/fill-in-cat.png');
             break;
           case 'Cookie':
-            drawImageOnCanvas('img/fill-in-cookie.png');
+            drawImageOnCanvas('assets/img/fill-in-cookie.png');
             break;
           case 'House':
-            drawImageOnCanvas('img/fill-in-house.png');
+            drawImageOnCanvas('assets/img/fill-in-house.png');
             break;
         }
       });
